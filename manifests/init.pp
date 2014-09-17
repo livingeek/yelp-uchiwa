@@ -51,6 +51,11 @@
 #    Boolean
 #    Default: true
 #    Should we start the service?
+#  
+#  [*upstart*]
+#    Boolean
+#    Default: false
+#    Should we use upstart?  Requires manage_services to be true.
 #
 #  [*manage_user*]
 #    Boolean
@@ -98,6 +103,7 @@ class uchiwa (
   $repo_key_id     = $uchiwa::params::repo_key_id,
   $repo_key_source = $uchiwa::params::repo_key_source,
   $manage_services = $uchiwa::params::manage_services,
+  $upstart         = $uchiwa::params::upstart,
   $manage_user     = $uchiwa::params::manage_user,
   $host            = $uchiwa::params::host,
   $port            = $uchiwa::params::port,
@@ -125,9 +131,8 @@ class uchiwa (
   validate_string($stats)
   validate_string($refresh)
 
-  anchor { 'uchiwa::begin': } ->
   class { 'uchiwa::install': } ->
   class { 'uchiwa::config': } ~>
   class { 'uchiwa::service': } ->
-  anchor { 'uchiwa::end': }
+  Class['uchiwa']
 }

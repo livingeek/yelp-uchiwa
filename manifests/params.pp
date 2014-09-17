@@ -25,6 +25,7 @@ class uchiwa::params {
   $repo_key_id     = '7580C77F'
   $repo_key_source = 'http://repos.sensuapp.org/apt/pubkey.gpg'
   $manage_services = true
+  $upstart         = false
   $manage_user     = true
 
   $host            =     '0.0.0.0'
