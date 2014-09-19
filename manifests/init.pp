@@ -51,7 +51,7 @@
 #    Boolean
 #    Default: true
 #    Should we start the service?
-#  
+#
 #  [*upstart*]
 #    Boolean
 #    Default: false
